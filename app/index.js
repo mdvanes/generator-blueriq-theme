@@ -10,7 +10,7 @@
 
     * run locally for debugging:
         * set up: ```npm link``` now a the local project is accessible globally
-        * in any dir run ```yo mdworld-toolchain```
+        * in any dir run ```yo blueriq-theme```
  */
 
 var generators = require('yeoman-generator'),
@@ -23,7 +23,7 @@ var generators = require('yeoman-generator'),
 
 module.exports = generators.Base.extend({
     intro: function() {
-        console.log(yosay('Welcome to the MDWorld.nl web toolchain generator v' + pkg.version + '!'));
+        console.log(yosay('Welcome to the Blueriq Theme generator v' + pkg.version + '!'));
     },
     askFor: function() {
         var cb = this.async();
