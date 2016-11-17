@@ -78,8 +78,8 @@ if %ERRORLEVEL% neq 0 (
 )
 echo You selected this path: %configPath%.
 
-REM TODO replace this with the themename with yeoman
-set THEMENAME=mytesttheme
+REM replaced with the themename by yeoman
+set THEMENAME=<%= projectName %>
 
 REM Make themedir symlink
 @echo on
