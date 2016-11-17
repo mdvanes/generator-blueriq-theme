@@ -93,7 +93,7 @@ module.exports = generators.Base.extend({
         // Webresources
         this.fs.copy(
             this.templatePath('webresources/**/*'),
-            this.destinationPath('webresources/mvc/v2/themes/' + this.props.name),
+            this.destinationPath('webresources/mvc/v2/themes/' + this.props.name + '/src'),
             {
                 globOptions: {
                     ignore: ['_stubs/index.html'] // This doesn't seem to ignore, but the file is overwritten below anyway
@@ -101,8 +101,8 @@ module.exports = generators.Base.extend({
             }
         );
         this.fs.copyTpl(
-            this.templatePath('webresources/_stubs/index.html'),
-            this.destinationPath('webresources/mvc/v2/themes/' + this.props.name + '/_stubs/index.html'),
+            this.templatePath('webresources/stubs/index.html'),
+            this.destinationPath('webresources/mvc/v2/themes/' + this.props.name + '/src/stubs/index.html'),
             { projectName: this.props.name }
         );
         // Root
@@ -122,6 +122,6 @@ module.exports = generators.Base.extend({
         );
     },
     outtro: function() {
-        console.log(chalk.bold.green('Run `grunt` and visit the server at http://localhost:8282/_stubs/'));
+        console.log(chalk.bold.green('Run `grunt` and visit the server at http://localhost:8282/stubs/'));
     }
 });

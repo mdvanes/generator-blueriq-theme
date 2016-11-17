@@ -6,6 +6,10 @@ module.exports = function(grunt) {
     require('time-grunt')(grunt);
     require('load-grunt-tasks')(grunt);
 
+    var pkg = require('./package.json'); // read package.json to expose its variables under pkgJson
+    var srcRoot = 'webresources/mvc/v2/themes/' + pkg.name + '/src/';
+    var distRoot = 'webresources/mvc/v2/themes/' + pkg.name + '/dist/';
+
     var src = {
         scripts: [
             '_js/app.js'
@@ -14,11 +18,12 @@ module.exports = function(grunt) {
 
     // Project configuration.
     grunt.initConfig({
-        pkg: grunt.file.readJSON('package.json'), // read package.json to expose it variables under pkg
+        pkg: pkg, // expose pkg to grunt
+        srcRoot: srcRoot,
 
         watch: {
             sass: {
-                files: ['_sass/**/*.scss'],
+                files: [srcRoot + 'sass/**/*.scss'],
                 tasks: ['sasslint:all', 'sass:dev']
             },
             script: {
@@ -47,7 +52,7 @@ module.exports = function(grunt) {
                     outputStyle: 'expanded'
                 },
                 files: {
-                    'css/styles.css': '_sass/styles.scss'
+                    '<%= distRoot %>css/styles.css': '<%= srcRoot %>sass/styles.scss'
                 }
             },
             dist: {
@@ -55,7 +60,7 @@ module.exports = function(grunt) {
                     outputStyle: 'compressed'
                 },
                 files: {
-                    'css/styles.css': '_sass/styles.scss'
+                    '<%= distRoot %>css/styles.css': '<%= srcRoot %>sass/styles.scss'
                 }
             }
         },
