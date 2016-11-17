@@ -84,9 +84,24 @@ module.exports = generators.Base.extend({
         );
     },
     copyTemplates: function() {
+        //this.fs.copy(
+        //    this.templatePath('**/*'),
+        //    this.destinationRoot(),
+        //    {
+        //        globOptions: {
+        //            dot: true,
+        //            ignore: ['_stubs/index.html'] // This doesn't seem to ignore, but the file is overwritten below anyway
+        //        }
+        //    }
+        //);
+        //this.fs.copyTpl(
+        //    this.templatePath('_stubs/index.html'),
+        //    this.destinationPath('_stubs/index.html'),
+        //    { projectName: this.props.name }
+        //);
         this.fs.copy(
-            this.templatePath('**/*'),
-            this.destinationRoot(),
+            this.templatePath('webresources/**/*'),
+            this.destinationPath('webresources/mvc/v2/themes/' + this.props.name),
             {
                 globOptions: {
                     dot: true,
@@ -95,9 +110,18 @@ module.exports = generators.Base.extend({
             }
         );
         this.fs.copyTpl(
-            this.templatePath('_stubs/index.html'),
-            this.destinationPath('_stubs/index.html'),
+            this.templatePath('webresources/_stubs/index.html'),
+            this.destinationPath('webresources/mvc/v2/themes/' + this.props.name + '/_stubs/index.html'),
             { projectName: this.props.name }
+        );
+        this.fs.copy(
+            this.templatePath('*'),
+            this.destinationPath(''),
+            {
+                globOptions: {
+                    dot: true
+                }
+            }
         );
     },
     outtro: function() {
