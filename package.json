@@ -1,10 +1,10 @@
 {
-  "name": "generator-mdworld-toolchain",
+  "name": "generator-blueriq-theme",
   "version": "0.0.8",
-  "description": "Sets up the mdworld.nl toolchain",
+  "description": "Sets up a new Blueriq theme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/mdvanes/generator-mdworld-toolchain"
+    "url": "https://github.com/mdvanes/generator-blueriq-theme"
   },
   "files": [
     "app",
