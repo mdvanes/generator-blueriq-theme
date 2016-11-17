@@ -12,26 +12,28 @@ module.exports = function(grunt) {
 
     var src = {
         scripts: [
-            '_js/app.js'
+            '<%= srcRoot %>js/app.js'
         ]
     };
 
     // Project configuration.
     grunt.initConfig({
-        pkg: pkg, // expose pkg to grunt
+        // expose global variables to grunt
+        pkg: pkg,
         srcRoot: srcRoot,
+        distRoot: distRoot,
 
         watch: {
             sass: {
-                files: [srcRoot + 'sass/**/*.scss'],
+                files: ['<%= srcRoot %>sass/**/*.scss'],
                 tasks: ['sasslint:all', 'sass:dev']
             },
             script: {
-                files: ['_js/**/*.js', '_test/**/*.js'],
+                files: ['<%= srcRoot %>js/**/*.js', '<%= srcRoot %>test/**/*.js'],
                 tasks: ['jscs', 'jshint', 'karma:dev:run', 'uglify:dev']
             },
             images: {
-                files: ['_img/*.*'],
+                files: ['<%= srcRoot %>img/*.*'],
                 tasks: ['newer:imagemin:dev']
             }
         },
@@ -40,7 +42,7 @@ module.exports = function(grunt) {
             options: {
                 configFile: 'sass-lint.yml'
             },
-            all: ['_sass/**/*.scss']
+            all: ['<%= srcRoot %>sass/**/*.scss']
         },
 
         sass: {
@@ -69,7 +71,7 @@ module.exports = function(grunt) {
             options: {
                 jshintrc: '.jshintrc'
             },
-            all: ['Gruntfile.js', '_js/**/*.js']
+            all: ['Gruntfile.js', '<%= srcRoot %>js/**/*.js']
         },
 
         jscs: {
@@ -78,7 +80,7 @@ module.exports = function(grunt) {
             },
             dev: {
                 files: {
-                    src: ['Gruntfile.js', '_js/**/*.js']
+                    src: ['Gruntfile.js', '<%= srcRoot %>js/**/*.js']
                 }
             }
         },
@@ -97,12 +99,12 @@ module.exports = function(grunt) {
                     compress: false
                 },
                 files: {
-                    'js/<%= pkg.name.toLowerCase() %>.js': src.scripts
+                    '<%= distRoot %>js/<%= pkg.name.toLowerCase() %>.js': src.scripts
                 }
             },
             dist: {
                 files: {
-                    'js/<%= pkg.name.toLowerCase() %>.min.js': src.scripts
+                    '<%= distRoot %>js/<%= pkg.name.toLowerCase() %>.min.js': src.scripts
                 }
             }
         },
@@ -111,9 +113,9 @@ module.exports = function(grunt) {
             dev: {
                 files: [{
                     expand: true,
-                    cwd: '_img/',
+                    cwd: '<%= srcRoot %>img/',
                     src: ['**/*.{png,jpg,gif}'],
-                    dest: 'img/'
+                    dest: '<%= distRoot %>img/'
                 }]
             }
         },
@@ -133,10 +135,10 @@ module.exports = function(grunt) {
             dev: {
                 bsFiles: {
                     src : [
-                        'js/*.js',
-                        'css/*.css',
-                        'img/*.*',
-                        '_stubs/*.html'
+                        '<%= distRoot %>js/*.js',
+                        '<%= distRoot %>css/*.css',
+                        '<%= distRoot %>img/*.*',
+                        '<%= srcRoot %>_stubs/*.html'
                     ]
                 },
                 options: {
