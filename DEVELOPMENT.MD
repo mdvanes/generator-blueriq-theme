@@ -5,14 +5,14 @@ Instructions for the development of this generator. This is not needed to use th
 
 ## Testing the generator before publishing
 
-From the root of the generator project (in the generator-mdworld-toolchain/ folder), type: ```npm link```
+From the root of the generator project (in the generator-blueriq-theme/ folder), type: ```npm link```
 
 That will install your project dependencies and symlink a global module to your local file. After npm is done, 
-you'll be able to call ```yo mdworld-toolchain``` 
+you'll be able to call ```yo blueriq-theme``` 
 
 Source: http://yeoman.io/authoring/
 
-Undo by uninstalling: ```npm remove -g generator-mdworld-toolchain``` Or manually removing. The location of local 
+Undo by uninstalling: ```npm remove -g generator-blueriq-theme``` Or manually removing. The location of local 
 packages can be retrieved with: ```npm config list -l``` (look for "prefix")
 
 
@@ -20,7 +20,7 @@ packages can be retrieved with: ```npm config list -l``` (look for "prefix")
 
 It is possible to check the installed version of a npm package with (but this doesn't seem to work for linked packages):
 
-```npm ls -g mdworld-toolchain```
+```npm ls -g blueriq-theme```
 
 
 ## Releasing

@@ -1,7 +1,7 @@
 {
   "name": "generator-blueriq-theme",
   "version": "0.0.8",
-  "description": "Sets up a new Blueriq theme",
+  "description": "Quickly sets up the directories and tooling for a new Blueriq theme",
   "repository": {
     "type": "git",
     "url": "https://github.com/mdvanes/generator-blueriq-theme"
