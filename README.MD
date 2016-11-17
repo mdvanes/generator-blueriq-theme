@@ -30,7 +30,7 @@ and visit http://localhost:8282/webresources/mvc/v2/themes/[your_theme_name]/src
 # Purpose
 
 The goal of this generator is to set up as fast as possible, so there is very little interactive input during setup. 
-It sets up a new Blueriq 9.8+ theme (front-end architecture v2) with:
+It sets up a new Blueriq 9.8+ KnockoutJS theme (front-end architecture v2) with:
 
 * grunt
 * grunt-browser-sync
