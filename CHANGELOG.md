@@ -1,3 +1,9 @@
+
+* Added Blueriq dir structure
+* Changed example logo.png
+* Added setupSymLinks.bat
+* Forked from generator-mdworld-toolchain
+
 ### 0.0.8 - 2016-10-28
 * Added Karma (fixing #5)
 * Optimizations for project generation (fixing #1 and #2)
