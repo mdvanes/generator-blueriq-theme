@@ -1,3 +1,4 @@
+### 0.0.9 - 2016-11-17
 
 * Added Blueriq dir structure
 * Changed example logo.png
