@@ -84,27 +84,18 @@ module.exports = generators.Base.extend({
         );
     },
     copyTemplates: function() {
-        //this.fs.copy(
-        //    this.templatePath('**/*'),
-        //    this.destinationRoot(),
-        //    {
-        //        globOptions: {
-        //            dot: true,
-        //            ignore: ['_stubs/index.html'] // This doesn't seem to ignore, but the file is overwritten below anyway
-        //        }
-        //    }
-        //);
-        //this.fs.copyTpl(
-        //    this.templatePath('_stubs/index.html'),
-        //    this.destinationPath('_stubs/index.html'),
-        //    { projectName: this.props.name }
-        //);
+        // UI
+        this.fs.copyTpl(
+            this.templatePath('stg/template.stg'),
+            this.destinationPath('UI/mvc/v2/' + this.props.name + '.stg'),
+            { projectName: this.props.name }
+        );
+        // Webresources
         this.fs.copy(
             this.templatePath('webresources/**/*'),
             this.destinationPath('webresources/mvc/v2/themes/' + this.props.name),
             {
                 globOptions: {
-                    dot: true,
                     ignore: ['_stubs/index.html'] // This doesn't seem to ignore, but the file is overwritten below anyway
                 }
             }
@@ -114,6 +105,7 @@ module.exports = generators.Base.extend({
             this.destinationPath('webresources/mvc/v2/themes/' + this.props.name + '/_stubs/index.html'),
             { projectName: this.props.name }
         );
+        // Root
         this.fs.copy(
             this.templatePath('*'),
             this.destinationPath(''),
@@ -122,6 +114,11 @@ module.exports = generators.Base.extend({
                     dot: true
                 }
             }
+        );
+        this.fs.copyTpl(
+            this.templatePath('setupSymLinks.bat'),
+            this.destinationPath('setupSymLinks.bat'),
+            { projectName: this.props.name }
         );
     },
     outtro: function() {
