@@ -122,6 +122,6 @@ module.exports = generators.Base.extend({
         );
     },
     outtro: function() {
-        console.log(chalk.bold.green('Run `grunt` and visit the server at http://localhost:8282/stubs/'));
+        console.log(chalk.bold.green('Run `grunt` and visit the server at http://localhost:8282/webresources/mvc/v2/themes/' + this.props.name + '/src/stubs/'));
     }
 });
