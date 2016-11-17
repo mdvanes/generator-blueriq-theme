@@ -25,7 +25,7 @@ After setting up run:
 grunt
 ```
 
-and visit http://localhost:8282/_stubs/
+and visit http://localhost:8282/webresources/mvc/v2/themes/[your_theme_name]/src/stubs/
 
 # Purpose
 
