@@ -1,3 +1,9 @@
+* Fixed problem with Karma path because of changed Blueriq dir structure
+* Added .editorconfig fixing #9
+* Compile templates ...
+* Replaced sass-lint by stylelint fixing #8
+* Replaced jscs and jshint by eslint fixing #2
+
 ### 0.0.9 - 2016-11-17
 
 * Added Blueriq dir structure

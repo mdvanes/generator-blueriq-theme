@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+/* eslint-env node */
 
 module.exports = function(grunt) {
     'use strict';
@@ -26,11 +27,11 @@ module.exports = function(grunt) {
         watch: {
             sass: {
                 files: ['<%= srcRoot %>sass/**/*.scss'],
-                tasks: ['sasslint:all', 'sass:dev']
+                tasks: ['stylelint:all', 'sass:dev']
             },
             script: {
                 files: ['<%= srcRoot %>js/**/*.js', '<%= srcRoot %>test/**/*.js'],
-                tasks: ['jscs', 'jshint', 'karma:dev:run', 'uglify:dev']
+                tasks: ['eslint', 'karma:dev:run', 'uglify:dev']
             },
             images: {
                 files: ['<%= srcRoot %>img/*.*'],
@@ -38,9 +39,10 @@ module.exports = function(grunt) {
             }
         },
 
-        sasslint: {
+        stylelint: {
             options: {
-                configFile: 'sass-lint.yml'
+                configFile: '.stylelintrc',
+                syntax: 'scss'
             },
             all: ['<%= srcRoot %>sass/**/*.scss']
         },
@@ -67,22 +69,11 @@ module.exports = function(grunt) {
             }
         },
 
-        jshint: {
+        eslint: {
             options: {
-                jshintrc: '.jshintrc'
+                configFile: '.eslintrc'
             },
-            all: ['Gruntfile.js', '<%= srcRoot %>js/**/*.js']
-        },
-
-        jscs: {
-            options: {
-                config: '.jscsrc'
-            },
-            dev: {
-                files: {
-                    src: ['Gruntfile.js', '<%= srcRoot %>js/**/*.js']
-                }
-            }
+            all: ['Gruntfile.js', '<%= srcRoot %>js/**/*.js', '<%= srcRoot %>test/**/*.js', '<%= srcRoot %>test/vendor/**/*.js']
         },
 
         uglify: {
@@ -122,11 +113,13 @@ module.exports = function(grunt) {
 
         karma: {
             dev: {
+                basePath: '<%= srcRoot %>',
                 configFile: 'karma.conf.js',
                 background: true,
                 singleRun: false
             },
             dist: {
+                basePath: '<%= srcRoot %>',
                 configFile: 'karma.conf.js'
             }
         },
@@ -154,7 +147,6 @@ module.exports = function(grunt) {
         'notify_hooks': {
             options: {
                 enabled: true,
-                'max_jshint_notifications': 5, // maximum number of notifications from jshint output
                 title: '<%= pkg.name.toLowerCase() %>', // defaults to the name in package.json, or will use project directory's name
                 success: false, // whether successful grunt executions should be notified automatically
                 duration: 3 // the duration of notification in seconds, for `notify-send only
@@ -164,5 +156,5 @@ module.exports = function(grunt) {
 
     // Tasks
     grunt.registerTask('default-watch', ['browserSync', 'karma:dev:start', 'watch']); /* for running when validators fail */
-    grunt.registerTask('default', ['jscs', 'jshint', 'uglify:dev', 'sasslint:all', 'sass:dev', 'newer:imagemin:dev', 'default-watch']);
+    grunt.registerTask('default', ['eslint', 'uglify:dev', 'stylelint:all', 'sass:dev', 'newer:imagemin:dev', 'default-watch']);
 };
