@@ -95,7 +95,7 @@ module.exports = generators.Base.extend({
             this.destinationPath('webresources/mvc/v2/themes/' + this.props.name + '/src'),
             {
                 globOptions: {
-                    ignore: ['_stubs/index.html'] // This doesn't seem to ignore, but the file is overwritten below anyway
+                    ignore: ['stubs/index.html'] // This doesn't seem to ignore, but the file is overwritten below anyway
                 }
             }
         );
