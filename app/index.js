@@ -15,11 +15,27 @@ var Generator = require('yeoman-generator'),
     yosay = require('yosay'),
     path = require('path'),
     chalk = require('chalk'),
+    hasbin = require('hasbin'),
+    commandExists = require('command-exists'),
     pkg = require('../package.json');
 
 module.exports = class extends Generator {
+    constructor(args, opts) {
+        super(args, opts);
+
+        // Run example: yo blueriq-theme --force-npm=true
+        this.option('forceNpm', {
+            description: 'Force using NPM, even if Yarn is installed. (default=false)',
+            type: String,
+            default: false
+        });
+
+        // And you can then access it later; e.g.
+        this.log(this.options.forceNpm && this.options.forceNpm === 'true');
+    }
+
     intro() {
-        console.log(yosay('Welcome to the Blueriq Theme generator v' + pkg.version + '!'));
+        this.log(yosay('Welcome to the Blueriq Theme generator v' + pkg.version + '!'));
     }
 
     askFor() {
@@ -67,13 +83,53 @@ module.exports = class extends Generator {
             'jasmine-core', 'karma', 'karma-coverage', 'karma-jasmine', 'karma-phantomjs-launcher', 'grunt-karma',
             'load-grunt-tasks',
             'time-grunt'];
-        this.npmInstall(dependencies,
-            { 'saveDev': true },
-            () => {
-                console.log('Dev dependency installation completed.');
-                this.outtro(); // Show the outtro a second time, after installing the packages.
-            }
-        );
+
+        const onCompleted = () => {
+            this.log('Dev dependency installation completed.');
+            this.outtro(); // Show the outtro a second time, after installing the packages.
+        };
+
+        //let self = this;
+        //commandExists('yarn', function(err, commandExists) {
+        //    //if(commandExists && (!this.options.forceNpm || this.options.forceNpm !== 'true') ) {
+        //    //    this.log('Using Yarn to install dependencies.');
+        //    //    this.yarnInstall(dependencies, { 'dev': true }, onCompleted);
+        //    //} else {
+        //    //    this.log('Using NPM to install dependencies.', this.npmInstall, dependencies, onCompleted);
+        //    //    // It's possible to use this.installDependencies to install the dependencies listed in the package.json,
+        //    //    // but using npmInstall will always install the latest versions of the dependencies instead of the specified versions.
+        //    //    self.npmInstall(dependencies, { 'save-dev': true }, onCompleted);
+        //    //}
+        //    self.npmInstall(dependencies, { 'save-dev': true }, onCompleted);
+        //    self.log('end');
+        //});
+        //this.npmInstall(dependencies, { 'save-dev': true }, onCompleted);
+
+        //commandExists('yarn', (err, commandExists) => {
+        //    if(commandExists && (!this.options.forceNpm || this.options.forceNpm !== 'true') ) {
+        //        this.log('Using Yarn to install dependencies.');
+        //        this.yarnInstall(dependencies, { 'dev': true }, onCompleted);
+        //    } else {
+        //        this.log('Using NPM to install dependencies.', this.npmInstall, dependencies, onCompleted);
+        //        // It's possible to use this.installDependencies to install the dependencies listed in the package.json,
+        //        // but using npmInstall will always install the latest versions of the dependencies instead of the specified versions.
+        //        this.npmInstall(dependencies, { 'save-dev': true }, onCompleted);
+        //    }
+        //});
+
+        const isYarnAvailable = hasbin.sync('yarn');
+        //this.log(result);
+
+        // TODO commandExists callback doesn't execute npmInstall properly, maybe hasbin works better of write conditions by hand https://github.com/springernature/hasbin
+        if(isYarnAvailable && (!this.options.forceNpm || this.options.forceNpm !== 'true')) {
+            this.log('Using Yarn to install dependencies.');
+            this.yarnInstall(dependencies, { 'dev': true }, onCompleted);
+        } else {
+            this.log('Using NPM to install dependencies.', this.npmInstall, dependencies, onCompleted);
+            // It's possible to use this.installDependencies to install the dependencies listed in the package.json,
+            // but using npmInstall will always install the latest versions of the dependencies instead of the specified versions.
+            this.npmInstall(dependencies, { 'save-dev': true }, onCompleted);
+        }
     }
 
     copyTemplates() {
@@ -116,6 +172,6 @@ module.exports = class extends Generator {
     }
 
     outtro() {
-        console.log(chalk.bold.green('Run `grunt` and visit the server at http://localhost:8282/webresources/mvc/v2/themes/' + this.props.name + '/src/stubs/'));
+        this.log(chalk.bold.green('Run `grunt` and visit the server at http://localhost:8282/webresources/mvc/v2/themes/' + this.props.name + '/src/stubs/'));
     }
 };
