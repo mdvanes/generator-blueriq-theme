@@ -1,4 +1,4 @@
-/* jshint jasmine:true */
+/* eslint-env jasmine */
 (function(myAppTest) {
     'use strict';
 
