@@ -17,8 +17,6 @@ var Generator = require('yeoman-generator'),
     chalk = require('chalk'),
     pkg = require('../package.json');
 
-// TODO test adding a subgenerator
-
 module.exports = class extends Generator {
     intro() {
         console.log(yosay('Welcome to the Blueriq Theme generator v' + pkg.version + '!'));
