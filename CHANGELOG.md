@@ -1,3 +1,4 @@
+### 0.0.10 - 2017-01-10
 
 * Replaced sass-lint by stylelint fixing #8
 * Replaced jscs and jshint by eslint fixing #2
