@@ -1,6 +1,6 @@
 {
   "name": "generator-blueriq-theme",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "Quickly sets up the directories and tooling for a new Blueriq theme",
   "repository": {
     "type": "git",
