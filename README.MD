@@ -19,6 +19,12 @@ Then scaffold a project by running in the target dir:
 yo blueriq-theme
 ```
 
+The generator will try to install packages with Yarn if available and otherwise falls back to NPM. If you want to force the use of NPM use the forceNpm flag:
+
+```
+yo blueriq-theme --forceNpm=true
+```
+
 After setting up run:
 
 ```
@@ -59,4 +65,4 @@ The package.json will be set up with the default windows username, and if it's n
 
 The default license in the generated package.json is "closed" and "private" is set to true to prevent accidental publishing to NPM.
 
-The generator will try to install packages with Yarn if available and otherwise falls back to NPM.
+
