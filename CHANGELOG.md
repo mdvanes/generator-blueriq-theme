@@ -1,3 +1,4 @@
+### 0.0.11 - 2017-01-10
 ### 0.0.10 - 2017-01-10
 
 * Replaced sass-lint by stylelint fixing #8
