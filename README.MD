@@ -56,3 +56,5 @@ Scaffolds \_js, \_sass, \_stubs, _test dirs and .gitignore, .eslintrc, .stylelin
 The package.json will be set up with the default windows username, and if it's not available, it will fallback to my name. 
 
 The default license in the generated package.json is "closed" and "private" is set to true to prevent accidental publishing to NPM.
+
+The generator will try to install packages with Yarn if available and otherwise falls back to NPM.
