@@ -28,9 +28,6 @@ module.exports = class extends Generator {
             type: String,
             default: false
         });
-
-        // And you can then access it later; e.g.
-        this.log(this.options.forceNpm && this.options.forceNpm === 'true');
     }
 
     intro() {
