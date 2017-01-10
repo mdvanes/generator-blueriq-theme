@@ -75,6 +75,7 @@ module.exports = class extends Generator {
             'grunt-contrib-imagemin',
             'grunt-contrib-uglify',
             'grunt-contrib-watch',
+            'grunt-kot2html',
             'grunt-eslint',
             'grunt-newer',
             'grunt-notify',

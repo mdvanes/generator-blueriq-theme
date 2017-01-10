@@ -36,6 +36,10 @@ module.exports = function(grunt) {
             images: {
                 files: ['<%= srcRoot %>img/*.*'],
                 tasks: ['newer:imagemin:dev']
+            },
+            templates: {
+                files: ['<%= srcRoot %>/template/**/*.html'],
+                tasks: ['kot2html']
             }
         },
 
@@ -97,6 +101,14 @@ module.exports = function(grunt) {
                 files: {
                     '<%= distRoot %>js/<%= pkg.name.toLowerCase() %>.min.js': src.scripts
                 }
+            }
+        },
+
+        kot2html: {
+            all: {
+                prefix: 'themes/<%= pkg.name.toLowerCase() %>/',
+                src: '<%= srcRoot %>/template/**/*.html',
+                dest: '<%= distRoot %>/template/custom-templates.html'
             }
         },
 

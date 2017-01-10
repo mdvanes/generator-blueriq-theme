@@ -42,6 +42,7 @@ It sets up a new Blueriq 9.8+ KnockoutJS theme (front-end architecture v2) with:
 * grunt-browser-sync
 * grunt-contrib-uglify
 * grunt-contrib-watch
+* grunt-kot2html
 * grunt-eslint
 * grunt-notify
 * grunt-sass
@@ -51,6 +52,7 @@ It sets up a new Blueriq 9.8+ KnockoutJS theme (front-end architecture v2) with:
 * time-grunt
 
 Scaffolds \_js, \_sass, \_stubs, _test dirs and .gitignore, .eslintrc, .stylelintrc, .editorconfig, Gruntfile.js, karma.conf.js files.
+@TODO grunt-kot2html
 @TODO correct paths
 
 The package.json will be set up with the default windows username, and if it's not available, it will fallback to my name. 
