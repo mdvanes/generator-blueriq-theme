@@ -90,10 +90,14 @@ module.exports = class extends Generator {
             this.log('Using Yarn to install dependencies.');
             this.yarnInstall(dependencies, { 'dev': true }, onCompleted);
         } else {
-            this.log('Using NPM to install dependencies.', this.npmInstall, dependencies, onCompleted);
+            this.log('Using NPM to install dependencies.');
             // It's possible to use this.installDependencies to install the dependencies listed in the package.json,
             // but using npmInstall will always install the latest versions of the dependencies instead of the specified versions.
-            this.npmInstall(dependencies, { 'save-dev': true }, onCompleted);
+            this.npmInstall(dependencies, { 'save-dev': true }, () => {
+                // Run `npm shrinkwrap --dev`
+                this.spawnCommand('npm', ['shrinkwrap', '--dev']);
+                onCompleted();
+            });
         }
     }
 
