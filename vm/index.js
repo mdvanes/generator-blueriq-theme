@@ -7,8 +7,7 @@
  * @type {*|exports|module.exports}
  * @example yo blueriq-theme:vm MyNewViewModel
  */
-var Generator = require('yeoman-generator'),
-    chalk = require('chalk');
+var Generator = require('yeoman-generator');
 
 module.exports = class extends Generator {
     createFile() {
