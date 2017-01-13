@@ -1,5 +1,5 @@
-* Eslint #13
-* Subgenerator for creating a VM added #12
+* Added eslint and unit test fixing #13
+* Subgenerator for creating a VM added fixing #12
 
 ### 0.0.10 - 2017-01-10
 
