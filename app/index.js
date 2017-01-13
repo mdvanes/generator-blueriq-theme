@@ -43,6 +43,7 @@ module.exports = class extends Generator {
             default : this.appname // Default to current folder name
         }]).then(props => {
             this.props = props;
+            this.config.set({'appName': this.props.name});
         });
     }
 

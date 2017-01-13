@@ -3,7 +3,6 @@
 
 /**
  * Blueriq KO Theme ViewModel generator
- * TODO add documentation, accept vm name as param.
  * @description Create a new Blueriq Knockout viewmodel in <themename>/js/<viewmodelname>
  * @type {*|exports|module.exports}
  * @example yo blueriq-theme:vm MyNewViewModel
@@ -27,11 +26,8 @@ module.exports = class extends Generator {
             type: String
         });
 
-        this.log(`Setting up a new KO ViewModel ${this.options.newName} extending blueriq.models.${this.options.extendVm}`);
-
         // Basic setup extending e.g. ContainerModel
-        const content = `
-(function(blueriq) {
+        const content = `(function(blueriq) {
     'use strict';
 
     blueriq.models.${this.options.newName}(model, context) {
@@ -42,8 +38,12 @@ module.exports = class extends Generator {
         `;
 
         // Write file
-        // TODO fix path
-        this.fs.write(`js/${this.options.newName}.js`, content);
+        const appName = this.config.get('appName');
+        const srcRoot = `webresources/mvc/v2/themes/${appName}/src`;
+        const path = `${srcRoot}/js/viewmodels/${this.options.newName}.js`;
+        this.fs.write(path, content);
+
+        this.log(`Setting up a new KO ViewModel blueriq.models.${this.options.newName} extending blueriq.models.${this.options.extendVm}`);
         // Do not register the vm in the factory, because the logic can't be predicted
     }
 };
