@@ -65,4 +65,10 @@ The package.json will be set up with the default windows username, and if it's n
 
 The default license in the generated package.json is "closed" and "private" is set to true to prevent accidental publishing to NPM.
 
+# Subgenerators
 
+After setting up a new theme, subgenerators can be used to set up new components.
+
+To set up a new view model, run ```yo blueriq-theme:vm Foo```, where Foo is the name of the new view model. The name will be
+used as the filename and also the internal name (this will be added to the existing namespace, in this example yielding
+```blueriq.models.Foo```). UpperCamelCase is recommended and the use of the "Model" or "ViewModel" suffix is discouraged.

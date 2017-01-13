@@ -13,6 +13,8 @@ module.exports = function(grunt) {
 
     var src = {
         scripts: [
+            '<%= srcRoot %>js/handlers/**.js',
+            '<%= srcRoot %>js/viewmodels/**.js',
             '<%= srcRoot %>js/app.js'
         ]
     };
