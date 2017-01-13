@@ -14,7 +14,16 @@ module.exports = function(grunt) {
             options: {
                 configFile: '.eslintrc'
             },
-            all: ['Gruntfile.js', 'app/**/*.js', 'vm/**/*.js']
+            all: ['Gruntfile.js', 'app/**/*.js', 'vm/**/*.js', 'test/**/*.js']
+        },
+
+        mochacli: {
+            options: {
+                //require: ['should'],
+                reporter: 'spec'
+                //bail: true
+            },
+            all: ['test/**/*.js']
         },
 
         release: {
@@ -35,7 +44,7 @@ module.exports = function(grunt) {
         }
     });
 
-    grunt.registerTask('test', ['eslint']);
+    grunt.registerTask('test', ['eslint', 'mochacli']);
     grunt.registerTask('default', ['test']);
 
 };
