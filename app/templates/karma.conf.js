@@ -1,5 +1,10 @@
+#!/usr/bin/env node
+/* eslint-env node */
+
 // Run this file standalone with: node_modules\.bin\karma start karma.conf.js. This requires the basePath config to be set.
 module.exports = function(config) {
+    'use strict';
+
     config.set({
         //basePath: '',
         frameworks: ['jasmine'],
