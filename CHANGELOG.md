@@ -1,3 +1,4 @@
+### 1.0.0-alpha.0 - 2017-01-13
 * Added eslint and unit test fixing #13
 * Subgenerator for creating a VM added fixing #12
 
