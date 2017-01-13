@@ -48,7 +48,10 @@ module.exports = class extends Generator {
     }
 
     writePackageJson() {
-        let userName = process.env['USERPROFILE'].split(path.sep).pop();
+        let userName = process.env['USERPROFILE'];
+        if(userName) {
+            userName = userName.split(path.sep).pop();
+        }
         if(!userName || userName.length === '0' || userName === 'm.van.es') {
             userName = 'M.D. van Es';
         }
