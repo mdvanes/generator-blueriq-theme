@@ -1,3 +1,4 @@
+### 1.0.0 - 2017-01-17
 
 * Updated documentation
 * Added license files fixing #7
