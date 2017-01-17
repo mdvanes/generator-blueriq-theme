@@ -65,7 +65,7 @@ Required manual steps:
 
 * Copy the contents from an existing STG to the generated STG and add the paths of the generated JS and CSS files. 
 * The Core and Bootstrap3 dirs are needed for development when running a stub of the STG. 
-* run setupSymLinks.bat and modify aquima.properties to see the theme in a Blueriq Runtime.
+* Run setupSymLinks.bat and modify aquima.properties to make the theme available in a Blueriq Runtime.
 
 
 # Subgenerators
