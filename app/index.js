@@ -12,7 +12,7 @@
         * in any dir run ```yo blueriq-theme```
  */
 
-var Generator = require('yeoman-generator'),
+const Generator = require('yeoman-generator'),
     yosay = require('yosay'),
     path = require('path'),
     chalk = require('chalk'),
