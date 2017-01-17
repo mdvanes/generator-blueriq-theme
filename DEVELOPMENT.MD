@@ -37,5 +37,5 @@ Finalize:
 
 ```grunt release```
  
-It's also possible to set a specific version number, see https://github.com/geddski/grunt-release
+It's also possible to set a specific version number, see https://github.com/geddski/grunt-release (e.g. `grunt release:1.0.0`)
 Instead of pushing with grunt release to NPM, it might be better to do this from Travis, after running the unit tests and only if the version was updated.
