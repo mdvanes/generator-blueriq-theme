@@ -1,4 +1,4 @@
-This generator is a component to be used in combination with Blueriq. This means that it is required to have a Blueriq License Agreement or trial.
+This theme is a component to be used in combination with Blueriq. This means that it is required to have a Blueriq License Agreement or trial.
 
 The manner in which you are allowed to use this component, and all other components, is defined in the License Agreement as a whole. You are not allowed to distribute, change, sell or use this software
 unless stated otherwise in the License Agreement.
