@@ -29,12 +29,11 @@ module.exports = class extends Generator {
         const content = `(function(blueriq) {
     'use strict';
 
-    blueriq.models.${this.options.newName}(model, context) {
+    blueriq.models.${this.options.newName} = function ${this.options.newName}(model, context) {
         var self = this;
         blueriq.models.${this.options.extendVm}.call(self, model, context);
     }
-})(window.blueriq);
-        `;
+})(window.blueriq);`;
 
         // Write file
         const appName = this.config.get('appName');
