@@ -82,12 +82,19 @@ REM replaced with the themename by yeoman
 set THEMENAME=<%= projectName %>
 
 REM Make themedir symlink
+mkdir "%configPath%\webresources"
+mkdir "%configPath%\webresources\mvc"
+mkdir "%configPath%\webresources\mvc\v2"
+mkdir "%configPath%\webresources\mvc\v2\themes"
 @echo on
 mklink /J "%configPath%\webresources\mvc\v2\themes\%THEMENAME%" "%~dp0\webresources\mvc\v2\themes\%THEMENAME%" 
 @echo off
 echo.
 
 REM Make STG symlink
+mkdir "%configPath%\UI"
+mkdir "%configPath%\UI\mvc"
+mkdir "%configPath%\UI\mvc\v2"
 rem echo TODO it should make symlinks to this projects UI/../[themename].stg and webresources/../[themename]/
 @echo on
 mklink "%configPath%\UI\mvc\v2\%THEMENAME%.stg" "%~dp0\UI\mvc\v2\%THEMENAME%.stg"
