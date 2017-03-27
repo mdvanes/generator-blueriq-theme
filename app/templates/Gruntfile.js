@@ -109,7 +109,8 @@ module.exports = function(grunt) {
         kot2html: {
             all: {
                 prefix: 'themes/<%= pkg.name.toLowerCase() %>/',
-                src: '<%= srcRoot %>/template/**/*.html',
+                srcRoot: '<%= srcRoot %>/',
+                src: 'template/**/*.html',
                 dest: '<%= distRoot %>/template/custom-templates.html'
             }
         },
@@ -170,5 +171,5 @@ module.exports = function(grunt) {
 
     // Tasks
     grunt.registerTask('default-watch', ['browserSync', 'karma:dev:start', 'watch']); /* for running when validators fail */
-    grunt.registerTask('default', ['eslint', 'uglify:dev', 'stylelint:all', 'sass:dev', 'newer:imagemin:dev', 'default-watch']);
+    grunt.registerTask('default', ['eslint', 'uglify:dev', 'stylelint:all', 'sass:dev', 'kot2html:all', 'newer:imagemin:dev', 'default-watch']);
 };
